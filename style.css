@@ -1,6 +1,7 @@
 body{
-    background-color: black;
+    background: url("netflix-wallpaper.jpg") fixed;
 }
+
 *{
     color: white;
 }
@@ -13,9 +14,10 @@ div.best{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     }
 
-div.container{
+div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history{
     display: flex;
     width: 960px;
     overflow: hidden;
@@ -29,4 +31,43 @@ img{
 img:hover{
     border: 1px solid white;
     transition: border 0.3s ease-in-out;
+}
+
+#best-movie{
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 0px 80px;
+    grid-auto-flow: column;
+    grid-template-areas: 
+      "A B"
+      "A C"
+      "A D";
+}
+
+#best-movie > img {
+    width: 300px;
+    grid-area: A;
+    box-shadow: 5px 5px 10px white;
+}
+
+#best-movie > h2 {
+    grid-area: B;
+    font-size: 70px;
+    margin: 20px 0px;
+}
+
+#best-movie > p {
+    grid-area: C;
+    font-size: 30px;
+}
+
+#best-movie > button {
+    grid-area: D;
+    color: white;
+    background-color: darkred;
+    box-shadow: none;
+    border-style: none;
+    width: 120px;
+    justify-self: flex-end;
 }
