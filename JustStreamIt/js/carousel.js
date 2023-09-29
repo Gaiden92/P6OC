@@ -1,45 +1,26 @@
-class Carousel {
-    /**
-     * 
-     * @param {HTMLCollection} racine
-     * @param {Object} option
-     * @param {Object} option.slidesVisible : Nomnbre d'élements visiblent dans un slide
-     * @param {Object} option.slideToScroll : Nombre d'élements à faire défiler
-     */
-    constructor(element, option = {}){
-        this.element = element
-        this.option = Object.assign({}, {
-            slidesToScroll : 1,
-            slidesVisible : 1
-        }, option)
-        this.children = element.children
-        let root = this.createDivWithClass("carousel");
-        let items_container = this.createDivWithClass("items-container")
-        root.appendChild(items_container)
-        debugger
-        this.element.appendChild(root)
-
-
-    }
-   
-    /**
-     * 
-     * @param {string} className 
-     * @returns {HTMLElement} 
-     */
-    createDivWithClass(className){
-        let div = document.createElement("div");
-        div.setAttribute("class", className);
-        return div
-    }
-}
-
-
-// Au chargement de la page
-document.addEventListener("DOMContentLoaded", function (param) { 
-    // Création d'un nouveau caroussel
-    new Carousel(document.querySelector(".container")),{
-        slidesToScroll : 1,
-        slidesVisible : 5
-    }
- })
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const carousel = document.querySelector(".carousel-container");
+const track = document.querySelector(".track");
+let width = carousel.offsetWidth;
+let index = 0;
+window.addEventListener("resize", function () {
+  width = carousel.offsetWidth;
+});
+next.addEventListener("click", function (e) {
+  e.preventDefault();
+  index = index + 1;
+  prev.classList.add("show");
+  track.style.transform = "translateX(" + index * -width + "px)";
+  if (track.offsetWidth - index * width < index * width) {
+    next.classList.add("hide");
+  }
+});
+prev.addEventListener("click", function () {
+  index = index - 1;
+  next.classList.remove("hide");
+  if (index === 0) {
+    prev.classList.remove("show");
+  }
+  track.style.transform = "translateX(" + index * -width + "px)";
+});

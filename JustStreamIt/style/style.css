@@ -1,0 +1,161 @@
+body{
+    background: url("../img/netflix-wallpaper.jpg") fixed;
+    margin: 0;
+}
+@font-face {
+    font-family: Bebus;
+    src: url(../fonts/BebasNeue-Regular.otf);
+    src: url(../fonts/BebasNeue-Regular.ttf);
+  }
+
+*{
+    color: white;
+    font-family: Bebus, Impact, sans-serif;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+
+header > div.container{
+    display: flex;
+    width: 100%;
+    margin: auto 0;
+    align-items: center;
+} 
+
+div.logo{
+    flex: 1;
+}
+div.menu-container{
+    flex: 2;
+}
+
+header.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.764);
+  }
+
+
+ul.ul-menu{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+ul.ul-menu li{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 40px;
+}
+div.best{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+div.container{
+    position: relative;
+    width: 766px;
+}
+
+div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history{
+    display: flex;
+    width: 960px;
+    gap: 10px;
+}
+
+.container img{
+    border: 1px solid black;
+}
+
+.container img:hover{
+    border: 1px solid white;
+    transition: border 0.3s ease-in-out;
+}
+
+#best-movie{
+    width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 0px 80px;
+    grid-auto-flow: column;
+    grid-template-areas: 
+      "A B"
+      "A C"
+      "A D";
+}
+
+#best-movie > img {
+    width: 300px;
+    grid-area: A;
+    box-shadow: 5px 5px 10px white;
+}
+
+#best-movie > h2 {
+    grid-area: B;
+    font-size: 70px;
+    margin: 20px 0px;
+}
+
+#best-movie > p {
+    grid-area: C;
+    font-size: 30px;
+}
+
+#best-movie > button {
+    grid-area: D;
+    color: white;
+    background-color: darkred;
+    box-shadow: none;
+    border-style: none;
+    width: 120px;
+    justify-self: flex-end;
+}
+
+/*Caroussel*/
+.carousel-all, .carousel-history, .carousel-drama, .carousel-comedy{
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+}
+.items-container-all, .items-container-history, .items-container-drama, .items-container-comedy{
+    transition: transform 0.5s ease-in-out;
+}
+
+.nav-history > button, .nav-comedy > button, .nav-drama > button, .nav-all > button {
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    border-style: solid;
+    cursor: pointer;
+  }
+
+.prev-history, .prev-comedy, .prev-drama, .prev-all{
+    left: -30px;
+    border-width: 30px 25px 30px 0;
+    border-color: transparent #ffffff9e transparent transparent;
+    background-color: transparent;
+}
+
+.next-history, .next-comedy, .next-drama, .next-all {
+    right: -30px;
+    border-width: 30px 0 30px 25px;
+    border-color: transparent transparent transparent #ffffff9e;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.prev-history:hover, .prev-comedy:hover, .prev-drama:hover, .prev-all:hover{
+    border-color: transparent #fff transparent transparent;
+}
+.next-history:hover, .next-comedy:hover, .next-drama:hover, .next-all:hover {
+    border-color: transparent transparent transparent #fff;
+}

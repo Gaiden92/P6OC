@@ -45,16 +45,62 @@ class Carousel {
         this.children.forEach(function(child){
             items_container.appendChild(child)
         })
+        let nav = createDivWithClass("nav-"+this.genre.toLocaleLowerCase())
 
+
+
+        let tag_i_left = document.createElement("i");
+        tag_i_left.setAttribute("class", "fas fa-arrow-left fa-2x")
+        let tag_i_right = document.createElement("i");
+        tag_i_right.setAttribute("class", "fas fa-arrow-right fa-2x")
+
+
+        let previous_button = document.createElement("button")
+        previous_button.setAttribute("class", "prev-"+this.genre.toLocaleLowerCase())
+        previous_button.setAttribute("type", "button")
+
+        
+        let next_button = document.createElement("button")
+        next_button.setAttribute("class", "next-"+this.genre.toLocaleLowerCase())
+        next_button.setAttribute("type", "button")
+
+        
+        document.querySelector(".container-" + this.genre.toLocaleLowerCase()).appendChild(nav);
+        document.querySelector(".nav-"+this.genre.toLocaleLowerCase()).appendChild(next_button);
+        document.querySelector(".nav-"+this.genre.toLocaleLowerCase()).appendChild(previous_button);
+
+
+        let container_off_all_pictures = document.querySelector(".items-container-" + this.genre.toLocaleLowerCase())
+        let width = 0;
+        
+
+        function nextPicture(){
+            if (width >= -194){
+                width -= 194
+                container_off_all_pictures.style.transform = "translateX(" + width + "px)";
+            }
+        }
+    
+        function previousPicture(){
+            if(width < 0){
+                width += 194
+                container_off_all_pictures.style.transform = "translateX(" + width + "px)";
+            }
+    
+        }
+        previous_button.addEventListener("click", previousPicture)
+        next_button.addEventListener("click", nextPicture)
+
+        
     }
-
+    
 }
 
 
 
 // fonction affichage bloc "meilleur film"
 function get_best_movie_data(requete_best_movie){
-    fetch(requete_best_movie).then(response => response.json().then(data => {
+    fetch(requete_best_movie).then(response =>  response.json().then(data => {
                     
         title_movie = data["title"];
         description_movie = "Imdb best movies all categories. "
@@ -75,15 +121,14 @@ function get_best_movie_data(requete_best_movie){
         button.setAttribute("type", "button")
         button.innerHTML = "Voir plus";
 
+        
+
         // Div meilleur film
         document.querySelector("#best-movie").appendChild(img);
         document.querySelector("#best-movie").appendChild(h2);
         document.querySelector("#best-movie").appendChild(p);
         document.querySelector("#best-movie").appendChild(button);
 
-        //pour modal
-        button.addEventListener("click", function () {this.style.backgroundColor = "red";}) 
-        
     }))
 }
 
@@ -92,11 +137,15 @@ async function getDataByGenre(genre = "All") {
     let nb_page = "";
     let request;
     let results = []
+
     new Carousel(document.querySelector(".container-"+genre_str), genre_str,{
         slidesToScroll : 1,
         slidesVisible : 5
         
     })
+
+
+
 
     //On boucle de la page 1 à 2
     for(let i=1;i <= 2;i++){
@@ -106,7 +155,7 @@ async function getDataByGenre(genre = "All") {
             if (i == 2){
                 nb_page = "&page=2";
             }
-            request = fetch(url + "?sort_by=-imdb_score" + nb_page);
+            request =  fetch(url + "?sort_by=-imdb_score" + nb_page);
             }
         else {
             if (i == 2){
@@ -127,7 +176,7 @@ async function getDataByGenre(genre = "All") {
             } 
            
             // On affecte à notre variable "results" le tableau de donnée récupéré. 
-            results = data_by_page;
+             results = data_by_page;
 
             
             
@@ -159,6 +208,7 @@ async function getDataByGenre(genre = "All") {
             });
         })
     }
+
     
 }
 
@@ -167,3 +217,26 @@ getDataByGenre();
 getDataByGenre(comedy);
 getDataByGenre(history);
 getDataByGenre(drama);
+
+window.onscroll = function() {
+    myFunction()
+
+};
+
+var navbar = document.getElementById("header");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+
+    if (window.scrollY > sticky) {
+        navbar.classList.add("sticky")
+    }
+    else{
+        navbar.classList.remove("sticky")
+    }
+  }
+
+
+
+
+
