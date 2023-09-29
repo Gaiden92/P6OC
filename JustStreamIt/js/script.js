@@ -15,7 +15,6 @@ const url = "http://127.0.0.1:8000/api/v1/titles/";
 function createDivWithClass(className){
     let div = document.createElement("div");
     div.setAttribute("class", className);
-
     return div
 }
 
@@ -48,13 +47,6 @@ class Carousel {
         let nav = createDivWithClass("nav-"+this.genre.toLocaleLowerCase())
 
 
-
-        let tag_i_left = document.createElement("i");
-        tag_i_left.setAttribute("class", "fas fa-arrow-left fa-2x")
-        let tag_i_right = document.createElement("i");
-        tag_i_right.setAttribute("class", "fas fa-arrow-right fa-2x")
-
-
         let previous_button = document.createElement("button")
         previous_button.setAttribute("class", "prev-"+this.genre.toLocaleLowerCase())
         previous_button.setAttribute("type", "button")
@@ -76,16 +68,16 @@ class Carousel {
 
         function nextPicture(){
             
-            if (width >= -388){
+            if (width >= -650){
                 console.log(width)
-                width -= 194
+                width -= 262
                 container_off_all_pictures.style.transform = "translateX(" + width + "px)";
             }
         }
     
         function previousPicture(){
             if(width < 0){
-                width += 194
+                width += 262
                 container_off_all_pictures.style.transform = "translateX(" + width + "px)";
             }
     
@@ -105,9 +97,12 @@ function get_best_movie_data(requete_best_movie){
     fetch(requete_best_movie).then(response =>  response.json().then(data => {
                     
         title_movie = data["title"];
-        description_movie = "Imdb best movies all categories. "
+        description_movie = "The Imdb best movie all categories. "
         description_movie += data["long_description"];
         image_movie_src = data["image_url"];
+
+        img = document.createElement("img");
+        img.src = image_movie_src
 
         h2 = document.createElement("h2");
         h2.innerHTML = title_movie;
@@ -115,21 +110,27 @@ function get_best_movie_data(requete_best_movie){
         p = document.createElement("p");
         p.innerHTML = description_movie
 
-        img = document.createElement("img");
-        img.src = image_movie_src
+        // Bouton "more infos"
+        button_infos = document.createElement("button")
+        button_infos.setAttribute("class", "button-modal-infos")
+        button_infos.setAttribute("type", "button")
+        button_infos.innerHTML = "More infos";
 
+        // Bouton "play movie"
         button = document.createElement("button")
         button.setAttribute("class", "button-modal")
         button.setAttribute("type", "button")
-        button.innerHTML = "Voir plus";
+        button.innerHTML = "Play movie";
 
         
 
         // Div meilleur film
-        document.querySelector("#best-movie").appendChild(img);
+        
         document.querySelector("#best-movie").appendChild(h2);
         document.querySelector("#best-movie").appendChild(p);
         document.querySelector("#best-movie").appendChild(button);
+        document.querySelector("#best-movie").appendChild(button_infos);
+        document.querySelector("#best-movie").appendChild(img);
 
     }))
 }
@@ -194,12 +195,11 @@ async function getDataByGenre(genre = "All") {
                 h3 = document.createElement("h3");
                 h3.innerHTML = element["title"];
                 
-                
+                //Image du film
                 img = document.createElement("img");
                 img.src = element["image_url"];
                 
-                div = document.createElement("div")
-                div.setAttribute("class", "carousel-items-"+genre_str);
+                div = createDivWithClass("carousel-items-"+genre_str)
                 div.appendChild(img)
                 document.querySelector(".items-container-"+genre_str).appendChild(div)
                 

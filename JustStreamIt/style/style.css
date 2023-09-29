@@ -26,6 +26,7 @@ header > div.container{
     width: 100%;
     margin: auto 0;
     align-items: center;
+    height: inherit;
 } 
 
 div.logo{
@@ -64,17 +65,17 @@ div.best{
 
 div.container{
     position: relative;
-    width: 766px;
+    width: 1038px;
 }
 
 div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history{
     display: flex;
-    width: 960px;
     gap: 10px;
 }
 
 .container img{
     border: 1px solid black;
+    width: 250px;
 }
 
 .container img:hover{
@@ -84,44 +85,57 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
 
 #best-movie{
     width: 1000px;
-    padding: 120px 0;
+    padding: 190px 0;
     margin: 0px auto;
     display: grid;
     grid-gap: 0px 80px;
     grid-auto-flow: column;
     grid-template-areas: 
-      "A B"
-      "A C"
-      "A D";
+      "B A"
+      "C A"
+      "D A"
+      "E A";
 }
 
 #best-movie > img {
-    width: 300px;
+    width: 350px;
     grid-area: A;
     box-shadow: 5px 5px 10px white;
 }
 
 #best-movie > h2 {
     grid-area: B;
-    font-size: 70px;
-    margin: 20px 0px;
+    font-size: 120px;
+    margin: 0px;
 }
 
 #best-movie > p {
     grid-area: C;
-    font-size: 30px;
+    font-size: 35px;
+    margin: 5px auto;
 }
 
 #best-movie > button {
     grid-area: D;
     color: white;
-    background-color: darkred;
     box-shadow: none;
     border-style: none;
     width: 120px;
-    justify-self: flex-end;
+    height: 60px;
+    font-size: 22px;
+    border-radius: 5px;
 }
 
+#best-movie > button.button-modal-infos{
+    background-color: rgb(56, 54, 54);
+    justify-self: flex-start;
+    grid-area: E;
+}
+
+#best-movie > button.button-modal{
+    background-color: darkred;
+    justify-self: flex-start;
+}
 /*Caroussel*/
 .carousel-all, .carousel-history, .carousel-drama, .carousel-comedy{
     overflow: hidden;
@@ -140,14 +154,14 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
   }
 
 .prev-history, .prev-comedy, .prev-drama, .prev-all{
-    left: -30px;
+    left: -40px;
     border-width: 30px 25px 30px 0;
     border-color: transparent #ffffff9e transparent transparent;
     background-color: transparent;
 }
 
 .next-history, .next-comedy, .next-drama, .next-all {
-    right: -30px;
+    right: -40px;
     border-width: 30px 0 30px 25px;
     border-color: transparent transparent transparent #ffffff9e;
     background-color: transparent;
