@@ -75,7 +75,9 @@ class Carousel {
         
 
         function nextPicture(){
-            if (width >= -194){
+            
+            if (width >= -388){
+                console.log(width)
                 width -= 194
                 container_off_all_pictures.style.transform = "translateX(" + width + "px)";
             }
@@ -143,9 +145,6 @@ async function getDataByGenre(genre = "All") {
         slidesVisible : 5
         
     })
-
-
-
 
     //On boucle de la page 1 à 2
     for(let i=1;i <= 2;i++){
