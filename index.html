@@ -9,6 +9,27 @@
     <title>JustStreamIt</title>
 </head>
 <body>
+    <div id="openModal" class="modalDialog">
+      <div>
+        <a href="#close" title="Close" class="close" onclick="closeModal()">X</a>
+        <img id="movie-image" src="" alt="">
+        
+        <h3 id="movie-title"></h3>
+        <p id="movie-genre"></p>
+        <p id="movie-date"></p>
+        <p id="movie-rate"></p>
+        <p id="movie-score"></p>
+        <p id="movie-realisator"></p>
+        <p id="movie-actors"></p>
+        <p id="movie-duration"></p>
+        <p id="movie-country"></p>
+        <p id="movie-results"></p>
+        <p id="movie-description"></p>
+        
+      </div>
+      <a href="#close" title="Close" class="close" onclick="closeModal()">x</a>
+        
+    </div>
         <header id="header">
             <div class="container">
                 <div class="logo">
@@ -17,10 +38,10 @@
                 <div class="menu-container">
                     <nav class="menu">
                         <ul class="ul-menu">
-                            <li>Best movies</li>
-                            <li>Best comedie</li>
-                            <li>Best history</li>
-                            <li>Best drama</li>
+                            <li><a href="#best-all-movies">Best movies</a></li>
+                            <li><a href="#best-comedy-movies">Best comedie</a></li>
+                            <li><a href="#best-history-movies">Best history</a></li>
+                            <li><a href="#best-drama-movies">Best drama</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -56,11 +77,12 @@
         </div>
     </div>
 
-    <div>
-        <footer>
 
-        </footer>
-    </div>
+    <footer id="footer">
+        <img src="JustStreamIt/img/logo-juststreamit.png" alt="JustStreamIt logo">
+        <p class="autor">© JustStreamIt - Toute reproduction interdite - 2023</p>
+    </footer>
+    
 
 <script src="JustStreamIt/js/script.js"></script>
 </body>

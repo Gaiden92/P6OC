@@ -37,7 +37,7 @@ class Carousel {
             slidesVisible : 1
         }, option)
         this.children = [].slice.call(element.children)
-        let root = createDivWithClass("carousel-"+this.genre);
+        let root = createDivWithClass("carousel-"+this.genre+ " carousel");
         let items_container = createDivWithClass("items-container-"+this.genre)
         root.appendChild(items_container)
         this.element.appendChild(root)
@@ -97,12 +97,13 @@ function get_best_movie_data(requete_best_movie){
     fetch(requete_best_movie).then(response =>  response.json().then(data => {
                     
         title_movie = data["title"];
-        description_movie = "The Imdb best movie all categories. "
+        description_movie = "The Imdb best movie all categories.<br>"
         description_movie += data["long_description"];
         image_movie_src = data["image_url"];
 
         img = document.createElement("img");
         img.src = image_movie_src
+        img.alt = data["id"]
 
         h2 = document.createElement("h2");
         h2.innerHTML = title_movie;
@@ -114,6 +115,7 @@ function get_best_movie_data(requete_best_movie){
         button_infos = document.createElement("button")
         button_infos.setAttribute("class", "button-modal-infos")
         button_infos.setAttribute("type", "button")
+        button_infos.setAttribute("onclick", "openModal(this.nextSibling)")
         button_infos.innerHTML = "More infos";
 
         // Bouton "play movie"
@@ -191,15 +193,21 @@ async function getDataByGenre(genre = "All") {
             // Création d'un h3 et d'une balise img pour chaque élement (film) de notre tableau.
             results.forEach(element => {
     
-                //Titre
-                h3 = document.createElement("h3");
-                h3.innerHTML = element["title"];
-                
+                //
+                p = document.createElement("p");
+                p.setAttribute("class", "more-informations")
+                p.innerHTML = "More infos"
+
+
                 //Image du film
                 img = document.createElement("img");
                 img.src = element["image_url"];
+                img.alt = element["id"]
                 
-                div = createDivWithClass("carousel-items-"+genre_str)
+                
+                div = createDivWithClass("carousel-items-"+genre_str+ " carousel-items")
+                div.setAttribute("onclick", "openModal(this.lastChild)")
+                div.appendChild(p)
                 div.appendChild(img)
                 document.querySelector(".items-container-"+genre_str).appendChild(div)
                 
@@ -218,14 +226,14 @@ getDataByGenre(history);
 getDataByGenre(drama);
 
 window.onscroll = function() {
-    myFunction()
+    stickyMenu()
 
 };
 
 var navbar = document.getElementById("header");
 var sticky = navbar.offsetTop;
 
-function myFunction() {
+function stickyMenu() {
 
     if (window.scrollY > sticky) {
         navbar.classList.add("sticky")
@@ -236,6 +244,42 @@ function myFunction() {
   }
 
 
+function openModal(img){
+    modal_div = document.querySelector(".modalDialog")
+    modal_div.classList.add("visible");
 
+    id = img.alt
+    
+    request = fetch(url+id)
+    .then(response => response.json())
+    .then(
+            movie_data => {
+                //titre
+                h2 = document.querySelector("#movie-title")
+                h2.innerHTML = movie_data["title"]
+
+                //description
+                description_movie = document.querySelector("#movie-description")
+                description_movie.innerHTML = movie_data["description"]
+                //date
+                date_movie = document.querySelector("#movie-date")
+                date_movie.innerHTML = movie_data["date_published"]
+                //image
+                img = document.querySelector("#movie-image")
+                img.src = movie_data["image_url"]
+                //genre
+                genre_movie = document.querySelector("#movie-genre")
+                genre_movie.innerHTML =  movie_data["genres"]
+                
+            }
+           
+    )
+
+}   
+
+function closeModal() { 
+    button_modal = document.querySelector("#close")
+    modal_div.classList.remove("visible");
+ }
 
 

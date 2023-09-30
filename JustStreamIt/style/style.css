@@ -12,7 +12,10 @@ body{
     color: white;
     font-family: Bebus, Impact, sans-serif;
 }
-
+html {
+    --scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
 header{
     width: 100%;
     height: 100px;
@@ -31,6 +34,7 @@ header > div.container{
 
 div.logo{
     flex: 1;
+    border: none;
 }
 div.menu-container{
     flex: 2;
@@ -50,8 +54,9 @@ ul.ul-menu{
     list-style: none;
 }
 
-ul.ul-menu li{
+ul.ul-menu li a {
     font-size: 30px;
+    text-decoration: none;
 }
 
 h2{
@@ -61,8 +66,11 @@ div.best{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 90px;
     }
-
+#best-drama-movies{
+    padding-bottom: 130px;
+}
 div.container{
     position: relative;
     width: 1038px;
@@ -73,14 +81,16 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     gap: 10px;
 }
 
-.container img{
+.container .carousel img{
     border: 1px solid black;
     width: 250px;
+
 }
 
-.container img:hover{
+.container .carousel img:hover{
     border: 1px solid white;
-    transition: border 0.3s ease-in-out;
+    transition: border 0.5s ease-in-out;
+
 }
 
 #best-movie{
@@ -136,7 +146,9 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     background-color: darkred;
     justify-self: flex-start;
 }
-/*Caroussel*/
+
+
+/*CAROUSSEL*/
 .carousel-all, .carousel-history, .carousel-drama, .carousel-comedy{
     overflow: hidden;
     transition: transform 0.5s ease-in-out;
@@ -144,6 +156,12 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
 .items-container-all, .items-container-history, .items-container-drama, .items-container-comedy{
     transition: transform 0.5s ease-in-out;
 }
+
+div.carousel-items{
+    position: relative;
+    cursor: pointer;
+}
+
 
 .nav-history > button, .nav-comedy > button, .nav-drama > button, .nav-all > button {
     position: absolute;
@@ -175,3 +193,109 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
 .next-history:hover, .next-comedy:hover, .next-drama:hover, .next-all:hover {
     border-color: transparent transparent transparent #fff;
 }
+
+/*FOOTER*/
+footer{
+    margin-top: 60px;
+    height: 150px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+footer p {text-align: center;}
+
+footer img{margin: 20px auto;
+}
+
+/*More-infos*/
+.carousel-items:hover p.more-informations{
+    visibility: visible;
+}
+p.more-informations{
+    z-index: 2;
+    visibility: hidden;
+    font-size: 35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transition: visibility 0.3s ease-in-out;
+    transform: translate(-50%, -50%);
+    text-shadow: 3px 3px 1px black;
+
+}
+
+.carousel-items::after{
+    z-index: 2;
+    visibility: hidden;
+    content: "";
+    background: #000000b8;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
+    z-index:1;
+    transition: visibility 0.3s ease-in-out;
+}
+
+.carousel-items:hover::after{
+    visibility: visible
+}
+
+/*Modal*/
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+
+  }
+    .visible{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modalDialog > div {
+    width: 1000px;
+    height: 600px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 5px;
+    background-color: #000000;
+  }
+  .close {
+    background: #000000;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 44px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close:hover {
+    background: #181818;
+  }
+  
