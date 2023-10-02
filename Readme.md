@@ -1,4 +1,6 @@
-![chess_club](image/P6-logo.png)
+<p align="center">
+  <img src="image/P6-logo.png"/>
+</p>
 
 # Projet 6 DA-Python OC (Fouchal Sami)
 ***Livrable du Projet 6 du parcours D-A Python d'OpenClassrooms : Développez une interface utilisateur pour une application web Python***
