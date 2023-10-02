@@ -7,7 +7,6 @@ _Testé sous Windows 10 - Python version 3.11.1_
 
 
 # Objectifs
-
 Récupérez les données de l'API REST [OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) pour créer une application web de type Netflix en utilisant Javascript Vanilla pour créer des carrousels et un modal.
 
 # Installation
