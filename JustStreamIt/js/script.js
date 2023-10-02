@@ -8,7 +8,7 @@ const url = "http://127.0.0.1:8000/api/v1/titles/";
    
 /**
  * 
- * @param {string} className 
+ * @param {string} idName 
  * @returns {HTMLElement} 
  */
 
@@ -18,11 +18,23 @@ function createPWithId(idName){
     return p
 }
 
+/**
+ * 
+ * @param {string} className 
+ * @returns {HTMLElement} 
+ */
+
 function createDivWithClass(className){
     let div = document.createElement("div");
     div.setAttribute("class", className);
     return div
 }
+
+/**
+ * 
+ * @param {string} idName 
+ * @returns {HTMLElement} 
+ */
 
 function createDivWithId(idName){
     let div = document.createElement("div");
@@ -98,8 +110,8 @@ class Carousel {
 
 
 // fonction affichage bloc "meilleur film"
-function getBestMovieData(requete_best_movie){
-    fetch(requete_best_movie).then(response => response.json().then(data => {
+async function getBestMovieData(requete_best_movie){
+    await fetch(requete_best_movie).then(response => response.json().then(data => {
         id = data["results"][0]["id"];
         fetch(url+id).then(response => response.json().then(best_movie_data => {
             title_movie = best_movie_data["title"];
@@ -205,8 +217,8 @@ async function getDataByGenre(genre = "All") {
 }
 
 
-var navbar = document.getElementById("header");
-var sticky = navbar.offsetTop;
+let navbar = document.getElementById("header");
+let sticky = navbar.offsetTop;
 
 function stickyMenu() {
     if (window.scrollY > sticky) {
@@ -219,7 +231,6 @@ function stickyMenu() {
 
 
 function openModal(e){
-
     id = e.target.id
     modal_div = document.querySelector(".modalDialog")
     modal_div.classList.add("visible");
@@ -281,7 +292,7 @@ function openModal(e){
 
                 // duration
                 duration_movie = createPWithId("movie-duration")
-                duration_movie.innerHTML = movie_data["duration"]
+                duration_movie.innerHTML = "Duration<br>" +movie_data["duration"]
                 modal_content.appendChild(duration_movie)
 
                 // countries
