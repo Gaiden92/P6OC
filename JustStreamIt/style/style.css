@@ -3,7 +3,7 @@ body{
     margin: 0;
 }
 @font-face {
-    font-family: Bebus;
+    font-family: Bebus, Arial, Helvetica, sans-serif;
     src: url(../fonts/BebasNeue-Regular.otf);
     src: url(../fonts/BebasNeue-Regular.ttf);
   }
@@ -140,11 +140,14 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     background-color: rgb(56, 54, 54);
     justify-self: flex-start;
     grid-area: E;
+    
 }
 
 #best-movie > button.button-modal{
     background-color: darkred;
     justify-self: flex-start;
+
+
 }
 
 
@@ -221,9 +224,15 @@ p.more-informations{
     top: 50%;
     left: 50%;
     margin: 0;
-    transition: visibility 0.3s ease-in-out;
+    transition: visibility 0.2s ease-in-out;
     transform: translate(-50%, -50%);
     text-shadow: 3px 3px 1px black;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: grid;
+    grid-column: auto;
+    align-content: center;
 
 }
 
@@ -240,7 +249,7 @@ p.more-informations{
     height:100%;
     width:100%;
     z-index:1;
-    transition: visibility 0.3s ease-in-out;
+    transition: visibility 0.2s ease-in-out;
 }
 
 .carousel-items:hover::after{
@@ -270,7 +279,7 @@ p.more-informations{
   }
   .modalDialog > div {
     width: 1000px;
-    height: 600px;
+    height: auto;
     position: relative;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
@@ -278,24 +287,93 @@ p.more-informations{
     background-color: #000000;
   }
   .close {
-    background: #000000;
+    background: rgb(169, 25, 25);
     color: #FFFFFF;
-    line-height: 25px;
+    line-height: 45px;
     position: absolute;
     right: -12px;
     text-align: center;
     top: -10px;
     width: 44px;
     text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
+    font-size: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
     -moz-box-shadow: 1px 1px 3px #000;
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
   }
   .close:hover {
-    background: #181818;
+    background: darkred;
   }
   
+
+#modal-content{
+    padding: 30px;
+    display: grid;
+    grid-gap: 0px 50px;
+    grid-auto-flow: column;
+    grid-template-areas: 
+      "A B"
+      "A C"
+      "A D"
+      "A E"
+      "A F"
+      "A G"
+      "A H"
+      "A I"
+      "A J"
+      "A K"
+      "A L";
+}
+
+#modal-content > #movie-image{
+    grid-area: A;
+    width: 300px;
+}
+
+#modal-content > h2{
+    margin: 0;
+    grid-area: B;
+}
+#modal-content > p#movie-date{
+    margin: 0;
+    grid-area: C;
+}
+#modal-content > p#movie-genre{
+    margin: 0;
+    grid-area: D;
+}
+#modal-content > #movie-rate{
+    margin: 0;
+    grid-area: E;
+}
+#modal-content > #movie-score{
+    margin: 0;
+    grid-area: F;
+}
+#modal-content > #movie-directors{
+    margin: 0;
+    grid-area: G;
+}
+#modal-content > #movie-actors{
+    margin: 0;
+    grid-area: H;
+}
+#modal-content > #movie-duration{
+    margin: 0;
+    grid-area: I;
+}
+#modal-content > #movie-countries{
+    margin: 0;
+    grid-area: J;
+}
+#modal-content > #movie-votes{
+    margin: 0;
+    grid-area: K;
+}
+#modal-content > #movie-description{
+    margin: 0;
+    grid-area: L;
+}

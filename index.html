@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +10,12 @@
 </head>
 <body>
     <div id="openModal" class="modalDialog">
-      <div>
-        <a href="#close" title="Close" class="close" onclick="closeModal()">X</a>
-        <img id="movie-image" src="" alt="">
-        
-        <h3 id="movie-title"></h3>
-        <p id="movie-genre"></p>
-        <p id="movie-date"></p>
-        <p id="movie-rate"></p>
-        <p id="movie-score"></p>
-        <p id="movie-realisator"></p>
-        <p id="movie-actors"></p>
-        <p id="movie-duration"></p>
-        <p id="movie-country"></p>
-        <p id="movie-results"></p>
-        <p id="movie-description"></p>
-        
-      </div>
-      <a href="#close" title="Close" class="close" onclick="closeModal()">x</a>
-        
+        <div id="modal-container">
+            <a href="#close" title="Close" class="close" onclick="closeModal()">X</a>
+            <div id="modal-content">
+
+            </div>
+        </div>    
     </div>
         <header id="header">
             <div class="container">
@@ -47,9 +34,7 @@
                 </div>
             </div>
         </header>
-    <div id="best-movie">
-
-    </div>
+    <div id="best-movie"></div>
     <div id="best-all-movies" class="best">
         <h2>Best movies</h2>
         <div class="container-all container">
@@ -73,7 +58,6 @@
         <h2>Drama</h2>
         <div class="container-drama container">
 
-            
         </div>
     </div>
 
@@ -84,6 +68,6 @@
     </footer>
     
 
-<script src="JustStreamIt/js/script.js"></script>
+    <script src="JustStreamIt/js/script.js"></script>
 </body>
 </html>

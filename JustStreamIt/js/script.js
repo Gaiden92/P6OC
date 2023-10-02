@@ -2,7 +2,6 @@ const comedy = "Comedy";
 const history = "History";
 const drama = "Drama";
 const adventure = "Adventure";
-
 const url = "http://127.0.0.1:8000/api/v1/titles/";
 
 //Fonctions raccourcies
@@ -12,12 +11,24 @@ const url = "http://127.0.0.1:8000/api/v1/titles/";
  * @param {string} className 
  * @returns {HTMLElement} 
  */
+
+function createPWithId(idName){
+    let p = document.createElement("p");
+    p.setAttribute("id", idName);
+    return p
+}
+
 function createDivWithClass(className){
     let div = document.createElement("div");
     div.setAttribute("class", className);
     return div
 }
 
+function createDivWithId(idName){
+    let div = document.createElement("div");
+    div.setAttribute("id", idName);
+    return div
+}
 
 /*Carouselle d'images*/
 class Carousel {
@@ -46,28 +57,23 @@ class Carousel {
         })
         let nav = createDivWithClass("nav-"+this.genre.toLocaleLowerCase())
 
-
         let previous_button = document.createElement("button")
         previous_button.setAttribute("class", "prev-"+this.genre.toLocaleLowerCase())
         previous_button.setAttribute("type", "button")
 
-        
         let next_button = document.createElement("button")
         next_button.setAttribute("class", "next-"+this.genre.toLocaleLowerCase())
         next_button.setAttribute("type", "button")
 
-        
         document.querySelector(".container-" + this.genre.toLocaleLowerCase()).appendChild(nav);
         document.querySelector(".nav-"+this.genre.toLocaleLowerCase()).appendChild(next_button);
         document.querySelector(".nav-"+this.genre.toLocaleLowerCase()).appendChild(previous_button);
-
 
         let container_off_all_pictures = document.querySelector(".items-container-" + this.genre.toLocaleLowerCase())
         let width = 0;
         
 
         function nextPicture(){
-            
             if (width >= -650){
                 console.log(width)
                 width -= 262
@@ -85,7 +91,6 @@ class Carousel {
         previous_button.addEventListener("click", previousPicture)
         next_button.addEventListener("click", nextPicture)
 
-        
     }
     
 }
@@ -93,47 +98,48 @@ class Carousel {
 
 
 // fonction affichage bloc "meilleur film"
-function get_best_movie_data(requete_best_movie){
-    fetch(requete_best_movie).then(response =>  response.json().then(data => {
-                    
-        title_movie = data["title"];
-        description_movie = "The Imdb best movie all categories.<br>"
-        description_movie += data["long_description"];
-        image_movie_src = data["image_url"];
+function getBestMovieData(requete_best_movie){
+    fetch(requete_best_movie).then(response => response.json().then(data => {
+        id = data["results"][0]["id"];
+        fetch(url+id).then(response => response.json().then(best_movie_data => {
+            title_movie = best_movie_data["title"];
+            description_movie = "The Imdb best movie all categories.<br>"
+            description_movie = best_movie_data["long_description"];
+            image_movie_src = best_movie_data["image_url"];
 
-        img = document.createElement("img");
-        img.src = image_movie_src
-        img.alt = data["id"]
+            img = document.createElement("img");
+            img.src = image_movie_src
+            img.alt = best_movie_data["id"]
 
-        h2 = document.createElement("h2");
-        h2.innerHTML = title_movie;
+            h2 = document.createElement("h2");
+            h2.innerHTML = title_movie;
 
-        p = document.createElement("p");
-        p.innerHTML = description_movie
+            p = document.createElement("p");
+            p.innerHTML = description_movie
 
-        // Bouton "more infos"
-        button_infos = document.createElement("button")
-        button_infos.setAttribute("class", "button-modal-infos")
-        button_infos.setAttribute("type", "button")
-        button_infos.setAttribute("onclick", "openModal(this.nextSibling)")
-        button_infos.innerHTML = "More infos";
+            // Bouton "more infos"
+            button_infos = document.createElement("button")
+            button_infos.setAttribute("id", id)
+            button_infos.setAttribute("class", "button-modal-infos")
+            button_infos.setAttribute("type", "button")
+            button_infos.innerHTML = "More infos";
+            button_infos.addEventListener("click", openModal)
 
-        // Bouton "play movie"
-        button = document.createElement("button")
-        button.setAttribute("class", "button-modal")
-        button.setAttribute("type", "button")
-        button.innerHTML = "Play movie";
+            // Bouton "play movie"
+            button = document.createElement("button")
+            button.setAttribute("class", "button-modal")
+            button.setAttribute("type", "button")
+            button.innerHTML = "Play movie";
 
+            // Div meilleur film
+            document.querySelector("#best-movie").appendChild(h2);
+            document.querySelector("#best-movie").appendChild(p);
+            document.querySelector("#best-movie").appendChild(button);
+            document.querySelector("#best-movie").appendChild(button_infos);
+            document.querySelector("#best-movie").appendChild(img);
+
+        }))
         
-
-        // Div meilleur film
-        
-        document.querySelector("#best-movie").appendChild(h2);
-        document.querySelector("#best-movie").appendChild(p);
-        document.querySelector("#best-movie").appendChild(button);
-        document.querySelector("#best-movie").appendChild(button_infos);
-        document.querySelector("#best-movie").appendChild(img);
-
     }))
 }
 
@@ -174,67 +180,35 @@ async function getDataByGenre(genre = "All") {
             if (i == 2){
                 //Si nous sommes sur la page 2, on récupère seulement les 2 premiers résultats.
                 data_by_page = data["results"].slice(0,2);
-                
             } 
            
             // On affecte à notre variable "results" le tableau de donnée récupéré. 
              results = data_by_page;
 
-            
-            
-            // Requete pour récuperer les informations du meilleur film
-            if (genre_str == "all" && i == 1){
-                let best_movie_data = results[0];
-                request = best_movie_data["url"];
-                get_best_movie_data(request);
-            }
-
-
             // Création d'un h3 et d'une balise img pour chaque élement (film) de notre tableau.
             results.forEach(element => {
-    
-                //
-                p = document.createElement("p");
-                p.setAttribute("class", "more-informations")
-                p.innerHTML = "More infos"
-
+                p = createPWithId(element["id"]);
+                p.setAttribute("class", "more-informations");
+                p.innerHTML = "More infos";
 
                 //Image du film
                 img = document.createElement("img");
                 img.src = element["image_url"];
-                img.alt = element["id"]
                 
-                
-                div = createDivWithClass("carousel-items-"+genre_str+ " carousel-items")
-                div.setAttribute("onclick", "openModal(this.lastChild)")
-                div.appendChild(p)
-                div.appendChild(img)
-                document.querySelector(".items-container-"+genre_str).appendChild(div)
-                
-                
+                div = createDivWithClass("carousel-items-"+genre_str+ " carousel-items");
+                div.appendChild(p);
+                div.appendChild(img);
+                document.querySelector(".items-container-"+genre_str).appendChild(div);
             });
         })
     }
-
-    
 }
 
-
-getDataByGenre();
-getDataByGenre(comedy);
-getDataByGenre(history);
-getDataByGenre(drama);
-
-window.onscroll = function() {
-    stickyMenu()
-
-};
 
 var navbar = document.getElementById("header");
 var sticky = navbar.offsetTop;
 
 function stickyMenu() {
-
     if (window.scrollY > sticky) {
         navbar.classList.add("sticky")
     }
@@ -244,33 +218,82 @@ function stickyMenu() {
   }
 
 
-function openModal(img){
+function openModal(e){
+
+    id = e.target.id
     modal_div = document.querySelector(".modalDialog")
     modal_div.classList.add("visible");
-
-    id = img.alt
     
     request = fetch(url+id)
     .then(response => response.json())
     .then(
             movie_data => {
+
+                // sélection div modal content
+                modal_content = document.querySelector("#modal-content");
+
+                //image
+                img = document.createElement("img")
+                img.setAttribute("id", "movie-image")
+                img.src = movie_data["image_url"]
+                modal_content.appendChild(img)
+                
                 //titre
-                h2 = document.querySelector("#movie-title")
+                h2 = document.createElement("h2")
+                h2.setAttribute("id", "movie-title")
                 h2.innerHTML = movie_data["title"]
+                modal_content.appendChild(h2)
 
                 //description
-                description_movie = document.querySelector("#movie-description")
-                description_movie.innerHTML = movie_data["description"]
-                //date
-                date_movie = document.querySelector("#movie-date")
-                date_movie.innerHTML = movie_data["date_published"]
-                //image
-                img = document.querySelector("#movie-image")
-                img.src = movie_data["image_url"]
-                //genre
-                genre_movie = document.querySelector("#movie-genre")
-                genre_movie.innerHTML =  movie_data["genres"]
+                description_movie = createPWithId("movie-description")
+                description_movie.innerHTML = movie_data["long_description"]
+                modal_content.appendChild(description_movie)
                 
+                //date
+                date_movie = createPWithId("movie-date")
+                date_movie.innerHTML = movie_data["date_published"]
+                modal_content.appendChild(date_movie)
+
+                //genre
+                genre_movie = createPWithId("movie-genre")
+                genre_movie.innerHTML =  movie_data["genres"]
+                modal_content.appendChild(genre_movie)
+
+                // rate
+                rate_movie = createPWithId("movie-rate")
+                rate_movie.innerHTML = movie_data["rated"]
+                modal_content.appendChild(rate_movie)
+
+                // score
+                score_movie = createPWithId("movie-score")
+                score_movie.innerHTML = movie_data["imdb_score"]
+                modal_content.appendChild(score_movie)
+
+                // directors
+                directors_movie = createPWithId("movie-directors")
+                directors_movie.innerHTML = movie_data["directors"]
+                modal_content.appendChild(directors_movie)
+
+                // actors
+                actors_movie = createPWithId("movie-actors")
+                actors_movie.innerHTML = movie_data["actors"]
+                modal_content.appendChild(actors_movie)
+
+                // duration
+                duration_movie = createPWithId("movie-duration")
+                duration_movie.innerHTML = movie_data["duration"]
+                modal_content.appendChild(duration_movie)
+
+                // countries
+                countries_movie = createPWithId("movie-countries")
+                countries_movie.innerHTML = movie_data["countries"]
+                modal_content.appendChild(countries_movie)
+
+                //results
+                votes_movie = createPWithId("movie-votes")
+                votes_movie.innerHTML = movie_data["votes"]
+                modal_content.appendChild(votes_movie)
+    
             }
            
     )
@@ -280,6 +303,25 @@ function openModal(img){
 function closeModal() { 
     button_modal = document.querySelector("#close")
     modal_div.classList.remove("visible");
+    modal_content = document.querySelector("#modal-content")
+    modal_content.innerHTML = "";
  }
 
+window.onload = function (){
+    let div = document.querySelectorAll("#best-movie > button")
+    div = document.body.querySelectorAll(".carousel")
+    div.forEach(element => {
+        element.addEventListener("click", openModal)
+    });
+    
+}
 
+window.onscroll = function() {
+    stickyMenu()
+};
+
+getBestMovieData("http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score");
+getDataByGenre();
+getDataByGenre(comedy);
+getDataByGenre(history);
+getDataByGenre(drama);
