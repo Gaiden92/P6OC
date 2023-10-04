@@ -1,22 +1,25 @@
-body{
+body {
     background: url("../img/netflix-wallpaper.jpg") fixed;
     margin: 0;
 }
+
 @font-face {
-    font-family: Bebus, Arial, Helvetica, sans-serif;
+    font-family: Bebus;
     src: url(../fonts/BebasNeue-Regular.otf);
     src: url(../fonts/BebasNeue-Regular.ttf);
-  }
+}
 
-*{
+* {
     color: white;
     font-family: Bebus, Impact, sans-serif;
 }
+
 html {
     --scroll-behavior: smooth;
     scroll-behavior: smooth;
 }
-header{
+
+header {
     width: 100%;
     height: 100px;
     transition: all 0.3s ease-in-out;
@@ -24,19 +27,21 @@ header{
     position: fixed;
 }
 
-header > div.container{
+header > div.container {
     display: flex;
     width: 100%;
     margin: auto 0;
+    padding: 0 50px;
     align-items: center;
     height: inherit;
-} 
+}
 
-div.logo{
+div.logo {
     flex: 1;
     border: none;
 }
-div.menu-container{
+
+div.menu-container {
     flex: 2;
 }
 
@@ -45,10 +50,9 @@ header.sticky {
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.764);
-  }
+}
 
-
-ul.ul-menu{
+ul.ul-menu {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
@@ -59,41 +63,44 @@ ul.ul-menu li a {
     text-decoration: none;
 }
 
-h2{
+h2 {
     font-size: 40px;
+    font-weight: 100;
 }
-div.best{
+
+div.best {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 90px;
-    }
-#best-drama-movies{
+}
+
+#best-drama-movies {
     padding-bottom: 130px;
 }
-div.container{
+
+div.container {
     position: relative;
     width: 1038px;
 }
 
-div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history{
+div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history {
     display: flex;
     gap: 10px;
 }
 
-.container .carousel img{
+.container .carousel img {
     border: 1px solid black;
     width: 250px;
-
+    height: 370px
 }
 
-.container .carousel img:hover{
+.container .carousel img:hover {
     border: 1px solid white;
     transition: border 0.5s ease-in-out;
-
 }
 
-#best-movie{
+#best-movie {
     width: 1000px;
     padding: 190px 0;
     margin: 0px auto;
@@ -101,8 +108,7 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     align-items: center;
     grid-gap: 0px 80px;
     grid-auto-flow: column;
-    grid-template-areas: 
-      "B A"
+    grid-template-areas: "B A"
       "C A"
       "D A"
       "E A";
@@ -116,7 +122,7 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
 
 #best-movie > h2 {
     grid-area: B;
-    font-size: 100px;
+    font-size: 120px;
     margin: 0px;
 }
 
@@ -137,15 +143,14 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     border-radius: 5px;
 }
 
-#best-movie > button.button-modal-infos{
+#best-movie > button.button-modal-infos {
     background-color: rgb(56, 54, 54);
     justify-self: flex-start;
     grid-area: E;
     cursor: pointer;
-    
 }
 
-#best-movie > button.button-modal{
+#best-movie > button.button-modal {
     background-color: darkred;
     justify-self: flex-start;
     cursor: pointer;
@@ -153,19 +158,19 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
 
 
 /*CAROUSSEL*/
-.carousel-all, .carousel-history, .carousel-drama, .carousel-comedy{
+.carousel-all, .carousel-history, .carousel-drama, .carousel-comedy {
     overflow: hidden;
     transition: transform 0.5s ease-in-out;
 }
-.items-container-all, .items-container-history, .items-container-drama, .items-container-comedy{
+
+.items-container-all, .items-container-history, .items-container-drama, .items-container-comedy {
     transition: transform 0.5s ease-in-out;
 }
 
-div.carousel-items{
+div.carousel-items {
     position: relative;
     cursor: pointer;
 }
-
 
 .nav-history > button, .nav-comedy > button, .nav-drama > button, .nav-all > button {
     position: absolute;
@@ -173,51 +178,60 @@ div.carousel-items{
     transform: translatey(-50%);
     border-style: solid;
     cursor: pointer;
-  }
+}
 
-.prev-history, .prev-comedy, .prev-drama, .prev-all{
+.prev-history, .prev-comedy, .prev-drama, .prev-all {
     left: -40px;
     border-width: 30px 25px 30px 0;
     border-color: transparent #ffffff9e transparent transparent;
-    background-color: transparent;
+    background-color: #00000008;
 }
 
 .next-history, .next-comedy, .next-drama, .next-all {
     right: -40px;
     border-width: 30px 0 30px 25px;
     border-color: transparent transparent transparent #ffffff9e;
-    background-color: transparent;
+    background-color: #00000008;
     transition: all 0.3s ease-in-out;
 }
 
-
-.prev-history:hover, .prev-comedy:hover, .prev-drama:hover, .prev-all:hover{
+.prev-history:hover, .prev-comedy:hover, .prev-drama:hover, .prev-all:hover {
     border-color: transparent #fff transparent transparent;
 }
+
 .next-history:hover, .next-comedy:hover, .next-drama:hover, .next-all:hover {
     border-color: transparent transparent transparent #fff;
 }
 
 /*FOOTER*/
-footer{
+footer {
     margin-top: 60px;
-    height: 150px;
     background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
 }
-footer p {text-align: center;}
 
-footer img{margin: 20px auto;
+footer p {
+    text-align: center;
 }
 
+footer img {
+    margin: 20px auto;
+}
+
+.css-validator {
+    border: 0;
+    width: 88px;
+    height: 31px;
+}
 /*More-infos*/
-.carousel-items:hover p.more-informations{
+.carousel-items:hover p.more-informations {
     visibility: visible;
 }
-p.more-informations{
+
+p.more-informations {
     z-index: 2;
     visibility: hidden;
     font-size: 35px;
@@ -234,26 +248,25 @@ p.more-informations{
     display: grid;
     grid-column: auto;
     align-content: center;
-
 }
 
-.carousel-items::after{
+.carousel-items::after {
     z-index: 2;
     visibility: hidden;
     content: "";
     background: #000000b8;
-    position:absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
-    height:100%;
-    width:100%;
-    z-index:1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
     transition: visibility 0.2s ease-in-out;
 }
 
-.carousel-items:hover::after{
+.carousel-items:hover::after {
     visibility: visible
 }
 
@@ -272,13 +285,14 @@ p.more-informations{
     -moz-transition: opacity 400ms ease-in;
     transition: opacity 400ms ease-in;
     pointer-events: none;
+}
 
-  }
-    .visible{
+.visible {
     opacity: 1;
     pointer-events: auto;
-  }
-  .modalDialog > div {
+}
+
+.modalDialog > div {
     width: 1000px;
     height: auto;
     position: relative;
@@ -286,8 +300,9 @@ p.more-informations{
     padding: 5px 20px 13px 20px;
     border-radius: 5px;
     background-color: #000000;
-  }
-  .close {
+}
+
+.close {
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(169, 25, 25);
     color: #FFFFFF;
@@ -305,19 +320,19 @@ p.more-informations{
     -moz-box-shadow: 1px 1px 3px #000;
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
-  }
-  .close:hover {
-    background: darkred;
-  }
-  
+}
 
-#modal-content{
+.close:hover {
+    background: darkred;
+}
+
+#modal-content {
     padding: 30px;
     display: grid;
     grid-gap: 0px 50px;
     grid-auto-flow: column;
-    grid-template-areas: 
-      "A B"
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "A B"
       "A C"
       "A D"
       "A E"
@@ -330,52 +345,70 @@ p.more-informations{
       "A L";
 }
 
-#modal-content > #movie-image{
+#modal-content img {
+    align-self: center;
+}
+
+#modal-content span {
+    text-decoration: underline;
+}
+#modal-content > p{
+    font-size: 18px;
+}
+#modal-content > p, h2 {
+    margin: 5px 0;
+}
+
+#modal-content > #movie-image {
     grid-area: A;
     width: 300px;
 }
 
-#modal-content > h2{
-    margin: 0;
+#modal-content > h2 {
     grid-area: B;
+    font-weight: 100;
 }
-#modal-content > p#movie-date{
-    margin: 0;
+
+#modal-content > p#movie-date {
     grid-area: C;
 }
-#modal-content > p#movie-genre{
-    margin: 0;
+
+#modal-content > p#movie-genre {
     grid-area: D;
 }
-#modal-content > #movie-rate{
-    margin: 0;
+
+#modal-content > #movie-rate {
     grid-area: E;
 }
-#modal-content > #movie-score{
-    margin: 0;
+
+#modal-content > #movie-score {
     grid-area: F;
 }
-#modal-content > #movie-directors{
-    margin: 0;
+
+#modal-content > #movie-directors {
     grid-area: G;
 }
-#modal-content > #movie-actors{
-    margin: 0;
+
+#modal-content > #movie-actors {
     grid-area: H;
 }
-#modal-content > #movie-duration{
-    margin: 0;
+
+#modal-content > #movie-duration {
     grid-area: I;
 }
-#modal-content > #movie-countries{
-    margin: 0;
+
+#modal-content > #movie-countries {
     grid-area: J;
 }
-#modal-content > #movie-votes{
-    margin: 0;
+
+#modal-content > #movie-votes {
     grid-area: K;
 }
-#modal-content > #movie-description{
-    margin: 0;
+
+#modal-content > #movie-description {
     grid-area: L;
+}
+
+#modal-content > #movie-description span {
+    display: block;
 }
