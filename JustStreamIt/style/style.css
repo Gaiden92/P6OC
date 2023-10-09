@@ -225,6 +225,10 @@ footer p {
     text-align: center;
 }
 
+footer > a {
+    text-align: center;
+}
+
 footer img {
     margin: 20px auto;
 }
