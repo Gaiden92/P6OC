@@ -75,8 +75,8 @@ div.best {
     padding-top: 90px;
 }
 
-#best-drama-movies {
-    padding-bottom: 130px;
+body > :nth-last-child(3) {
+    padding-bottom: 130px!important;
 }
 
 div.container {
@@ -84,7 +84,7 @@ div.container {
     width: 1038px;
 }
 
-div.items-container-comedy, div.items-container-all, div.items-container-drama, div.items-container-history {
+div.items-container{
     display: flex;
     gap: 10px;
 }
@@ -150,20 +150,28 @@ div.items-container-comedy, div.items-container-all, div.items-container-drama, 
     cursor: pointer;
 }
 
+#best-movie > button.button-modal-infos:hover {
+    background-color: rgb(42, 41, 41);
+}
+
 #best-movie > button.button-modal {
     background-color: darkred;
     justify-self: flex-start;
     cursor: pointer;
 }
 
+#best-movie > button.button-modal:hover {
+    background-color: rgb(104, 4, 4);
+}
+
 
 /*CAROUSSEL*/
-.carousel-all, .carousel-history, .carousel-drama, .carousel-comedy {
+.carousel{
     overflow: hidden;
     transition: transform 0.5s ease-in-out;
 }
 
-.items-container-all, .items-container-history, .items-container-drama, .items-container-comedy {
+.items-container{
     transition: transform 0.5s ease-in-out;
 }
 
@@ -172,7 +180,7 @@ div.carousel-items {
     cursor: pointer;
 }
 
-.nav-history > button, .nav-comedy > button, .nav-drama > button, .nav-all > button {
+.nav > button {
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
@@ -180,14 +188,14 @@ div.carousel-items {
     cursor: pointer;
 }
 
-.prev-history, .prev-comedy, .prev-drama, .prev-all {
+.prev{
     left: -40px;
     border-width: 30px 25px 30px 0;
     border-color: transparent #ffffff9e transparent transparent;
     background-color: #00000008;
 }
 
-.next-history, .next-comedy, .next-drama, .next-all {
+.next{
     right: -40px;
     border-width: 30px 0 30px 25px;
     border-color: transparent transparent transparent #ffffff9e;
@@ -195,11 +203,11 @@ div.carousel-items {
     transition: all 0.3s ease-in-out;
 }
 
-.prev-history:hover, .prev-comedy:hover, .prev-drama:hover, .prev-all:hover {
+.prev:hover{
     border-color: transparent #fff transparent transparent;
 }
 
-.next-history:hover, .next-comedy:hover, .next-drama:hover, .next-all:hover {
+.next:hover{
     border-color: transparent transparent transparent #fff;
 }
 
@@ -347,6 +355,7 @@ p.more-informations {
 
 #modal-content img {
     align-self: center;
+    height: 440px;
 }
 
 #modal-content span {

@@ -95,20 +95,20 @@ class Carousel {
 		}, option)
 		this.children = [].slice.call(element.children)
 		let root = createDivWithClass("carousel-" + this.genre + " carousel");
-		let items_container = createDivWithClass("items-container-" + this.genre)
+		let items_container = createDivWithClass("items-container-" + this.genre+ " items-container")
 		root.appendChild(items_container)
 		this.element.appendChild(root)
 		this.children.forEach(function(child) {
 			items_container.appendChild(child)
 		})
-		let nav = createDivWithClass("nav-" + this.genre.toLocaleLowerCase())
+		let nav = createDivWithClass("nav-" + this.genre.toLocaleLowerCase()+ " nav")
 
 		let previous_button = document.createElement("button")
-		previous_button.setAttribute("class", "prev-" + this.genre.toLocaleLowerCase())
+		previous_button.setAttribute("class", "prev-" + this.genre.toLocaleLowerCase()+ " prev")
 		previous_button.setAttribute("type", "button")
 
 		let next_button = document.createElement("button")
-		next_button.setAttribute("class", "next-" + this.genre.toLocaleLowerCase())
+		next_button.setAttribute("class", "next-" + this.genre.toLocaleLowerCase()+ " next")
 		next_button.setAttribute("type", "button")
 
 		document.querySelector(".container-" + this.genre.toLocaleLowerCase()).appendChild(nav);
@@ -289,6 +289,16 @@ function openModal(e) {
 				img.setAttribute("id", "movie-image")
 				img.src = movie_data["image_url"]
 				modal_content.appendChild(img)
+
+				// Test de l'url de l'image
+				let img_carousel = document.querySelectorAll("#movie-image");
+				img_carousel.forEach(element => {
+					checkIfImageExists(element.src, (exists) => {
+						if (!exists) {
+							element.src = "JustStreamIt/img/no-image-juststreamit.jpg";
+						}
+					});
+				})
 
 				//titre
 				h2 = document.createElement("h2")
