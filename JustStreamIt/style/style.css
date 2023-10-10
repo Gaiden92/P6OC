@@ -308,7 +308,7 @@ p.more-informations {
     width: 1000px;
     height: auto;
     position: relative;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 5px;
     background-color: #000000;
@@ -366,7 +366,7 @@ p.more-informations {
     text-decoration: underline;
 }
 #modal-content > p{
-    font-size: 18px;
+    font-size: 15px;
 }
 #modal-content > p, h2 {
     margin: 5px 0;
