@@ -271,12 +271,12 @@ function stickyMenu() {
 	}
 }
 
-function openModal(e) {
+async function openModal(e) {
 	id = e.target.id;
 	modal_div = document.querySelector(".modalDialog");
 	modal_div.classList.add("visible");
 
-	request = fetch(url + id)
+	request = await fetch(url + id)
 		.then(response => response.json())
 		.then(
 			movie_data => {
