@@ -385,6 +385,6 @@ window.onscroll = function() {
 
 getBestMovieData(url_best_movie);
 getDataByGenre();
-getDataByGenre(comedy);
+getDataByGenre("comedy");
 getDataByGenre(history);
 getDataByGenre(drama);
