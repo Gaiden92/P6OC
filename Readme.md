@@ -12,11 +12,10 @@ _Testé sous Windows 10 - Python version 3.11.1_
 Récupérez les données de l'API REST [OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) pour créer une application web de type Netflix en utilisant Javascript Vanilla pour créer des carrousels et un modal.
 
 # Installation
-    
-Clonez ou téléchargez l'API OCMovies
-Referez vous à la documentation (step 3 à 7) pour installer et lancer le serveur en local.
-$ git clone https://github.com/Gaiden92/P6OC.git
+Ouvrez un terminal et cloner ce dépot sur votre machine local :
+`$ git clone https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git`
+Ensuite,  rendez-vous sur le dépôt d'[OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) et suivez les étapes d'installation
 
 # Utilisation
 
-Pour accéder à la page, ouvrez le fichier « index.html » dans n'importe quel navigateur Web.
+Pour accéder à la page d'accueil du site, ouvrez le fichier « index.html » dans n'importe quel navigateur Web.
