@@ -13,8 +13,9 @@ Récupérez les données de l'API REST [OCMovies](https://github.com/OpenClassro
 
 # Installation
 Ouvrez un terminal et cloner ce dépot sur votre machine local :
-`$ git clone https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR.git`
-Ensuite,  rendez-vous sur le dépôt d'[OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) et suivez les étapes d'installation
+- `$ https://github.com/Gaiden92/P6OC.git`
+
+- Ensuite,  rendez-vous sur le dépôt d'[OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR) et suivez les étapes d'installation
 
 # Utilisation
 
