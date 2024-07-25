@@ -1,9 +1,7 @@
-# Développez une interface utilisateur pour une application web Python
-
 <p align="center">
   <img src="image/P6-logo.png"/>
 </p>
-<h1 align="center">JustStreamIt</em></h1>
+<h1 align="center">Développez une interface utilisateur pour une application web Python</em></h1>
 <p align="center">
     <a href="https://www.python.org">
         <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white" alt="python-badge">
