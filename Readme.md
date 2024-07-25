@@ -1,4 +1,4 @@
-#P6OC
+# P6OC
 
 <p align="center">
   <img src="image/P6-logo.png"/>
