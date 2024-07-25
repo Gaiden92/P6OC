@@ -1,8 +1,20 @@
+#P6OC
+
 <p align="center">
   <img src="image/P6-logo.png"/>
 </p>
+<h1 align="center">JustStreamIt</em></h1>
+<p align="center">
+    <a href="https://www.python.org">
+        <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white" alt="python-badge">
+    </a>
+    <a href="https://docs.djangoproject.com/en/5.0/">
+        <img src="https://img.shields.io/badge/Django-5.0+-d71b60?style=flat" alt="Django">
+    </a>
+</p>
 
-# Projet 6 DA-Python OC (Fouchal Sami)
+# A propos du projet
+
 ***Livrable du Projet 6 du parcours D-A Python d'OpenClassrooms : Développez une interface utilisateur pour une application web Python***
 
 _Testé sous Windows 10 - Python version 3.11.1_
